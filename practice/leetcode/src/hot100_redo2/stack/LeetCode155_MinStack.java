@@ -85,3 +85,41 @@ class MinStack {
         return min;
     }
 }
+
+
+class MinStack1 {
+    int min;
+    Stack<Long> stack;
+
+    public MinStack1() {
+        stack = new Stack<>();
+    }
+
+    public void push(int val) {
+        if (stack.isEmpty()) {
+            stack.push(0L);
+            min = val;
+            return;
+        }
+
+        stack.push((long) min - val);
+        min = Math.min(min, val);
+    }
+
+    public void pop() {
+        Long pop = stack.pop();;
+        if (pop > 0) {
+            min = (int) (min + pop);
+        }
+    }
+
+    public int top() {
+        Long peek = stack.peek();
+        if (peek > 0) return min;
+        return (int) (min - peek);
+    }
+
+    public int getMin() {
+        return min;
+    }
+}

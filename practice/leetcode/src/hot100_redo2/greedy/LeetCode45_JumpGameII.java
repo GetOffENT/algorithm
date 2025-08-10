@@ -2,7 +2,7 @@ package hot100_redo2.greedy;
 
 /**
  * <p>
- *     <a href="https://leetcode.cn/problems/jump-game-ii/description/?envType=study-plan-v2&envId=top-100-liked">...</a>
+ * <a href="https://leetcode.cn/problems/jump-game-ii/description/?envType=study-plan-v2&envId=top-100-liked">...</a>
  * </p>
  *
  * @author Yuxian Wu
@@ -11,6 +11,33 @@ package hot100_redo2.greedy;
  */
 public class LeetCode45_JumpGameII {
     public int jump(int[] nums) {
-        return 0;
+        int max = 0, end = 0, ans = 0;
+
+        for (int i = 0; i < nums.length - 1; i++) {
+            max = Math.max(i + nums[i], max);
+            if (i == end) {
+                end = max;
+                ans++;
+            }
+        }
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(
+                new LeetCode45_JumpGameII().jump(
+                        new int[]{2, 3, 1, 1, 4}
+                )
+        );
+        System.out.println(
+                new LeetCode45_JumpGameII().jump(
+                        new int[]{1, 2, 3}
+                )
+        );
+        System.out.println(
+                new LeetCode45_JumpGameII().jump(
+                        new int[]{1, 1, 1, 1}
+                )
+        );
     }
 }

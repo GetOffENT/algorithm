@@ -10,7 +10,27 @@ package hot100_redo2.technique;
  */
 public class LeetCode75_SortColors {
     public void sortColors(int[] nums) {
+        int low = 0, high= 0;
+        while (high < nums.length) {
+            if (nums[high] == 0) {
+                int temp = nums[high];
+                nums[high] = nums[low];
+                nums[low] = temp;
+                low++;
+            }
+            high++;
+        }
 
+        high = low;
+        while (high < nums.length) {
+            if (nums[high] == 1) {
+                int temp = nums[high];
+                nums[high] = nums[low];
+                nums[low] = temp;
+                low++;
+            }
+            high++;
+        }
     }
 
     public static void main(String[] args) {

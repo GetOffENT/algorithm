@@ -10,6 +10,10 @@ package hot100_redo2.technique;
  */
 public class LeetCode136_SingleNumber {
     public int singleNumber(int[] nums) {
-        return 0;
+        int single = 0;
+        for (int num : nums) {
+            single ^= num;
+        }
+        return single;
     }
 }

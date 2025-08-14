@@ -11,6 +11,22 @@ package hot100_redo3.twopointers;
  */
 public class LeetCode11_MaxArea {
     public int maxArea(int[] height) {
-        return 0;
+        int l = 0, r = height.length - 1;
+        int ans = 0;
+        while (l < r) {
+            ans = Math.max(ans, Math.min(height[r], height[l]) * (r - l));
+            if (height[l] < height[r]) {
+                l++;
+            } else {
+                r--;
+            }
+        }
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new hot100_redo2.twopointers.LeetCode11_MaxArea().maxArea(
+                new int[]{1,8,6,2,5,4,8,3,7}
+        ));
     }
 }

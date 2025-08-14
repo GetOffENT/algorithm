@@ -12,13 +12,21 @@ import java.util.List;
  */
 public class LeetCode139_WordBreak {
     public boolean wordBreak(String s, List<String> wordDict) {
-       return true;
+        boolean[] dp = new boolean[s.length() + 1];
+        dp[0] = true;
+        for (int i = 1; i <= s.length(); i++) {
+            for (String str : wordDict) {
+                if (i - str.length() >= 0)
+                    dp[i] = dp[i - str.length()] & s.startsWith(str, i - str.length());
+                if (dp[i]) {
+                    break;
+                }
+            }
+        }
+        return dp[s.length()];
     }
 
     public static void main(String[] args) {
-        System.out.println(new LeetCode139_WordBreak().wordBreak(
-                "leetcode",
-                List.of("leet", "code")
-        ));
+        System.out.println(new LeetCode139_WordBreak().wordBreak("leetcode", List.of("leet", "code")));
     }
 }

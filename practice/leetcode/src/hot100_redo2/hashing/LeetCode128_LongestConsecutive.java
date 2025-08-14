@@ -18,13 +18,11 @@ public class LeetCode128_LongestConsecutive {
         for (int num : nums) {
             set.add(num);
         }
-
         int ans = 0;
-        for (int num : nums) {
-            if (!set.contains(num - 1)) {
-                int curr = num;
+        for (int i = 0; i < nums.length; i++) {
+            if (!set.contains(nums[i]- 1)) {
+                int curr = nums[i];
                 int longest = 1;
-
                 while (set.contains(curr + 1)) {
                     curr++;
                     longest++;
